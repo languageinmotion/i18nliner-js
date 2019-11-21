@@ -2052,10 +2052,10 @@ var I18nliner = {
       Further limit extraction to these directories. If empty,
       I18nliner will look everywhere under <basePath>
      */
-    babylonPlugins: ["jsx", "classProperties", "objectRestSpread"]
+    babelPlugins: ["jsx", "flow", "classProperties", "objectRestSpread", "dynamicImport"]
     /*
-      The set of babylon plugins to use in AST parsing.
-      See: https://github.com/babel/babel/tree/master/packages/babylon#plugins
+      The set of babel plugins to use in AST parsing.
+      See: https://babeljs.io/docs/en/babel-parser#ecmascript-proposals-https-githubcom-babel-proposals
      */
 
   }

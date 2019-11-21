@@ -43,7 +43,7 @@ JsProcessor.prototype.sourceFor = function (file) {
 
 JsProcessor.prototype.parse = function (source) {
   return (0, _parser.parse)(source, {
-    plugins: _i18nliner["default"].config.babylonPlugins,
+    plugins: _i18nliner["default"].config.babelPlugins,
     sourceType: "module"
   });
 };
