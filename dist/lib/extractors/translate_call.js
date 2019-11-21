@@ -1,19 +1,19 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports["default"] = void 0;
+
+var _typeof2 = _interopRequireDefault(require("@babel/runtime/helpers/typeof"));
 
 var _call_helpers = _interopRequireDefault(require("../call_helpers"));
 
 var _errors = _interopRequireDefault(require("../errors"));
 
 var _utils = _interopRequireDefault(require("../utils"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function TranslateCall(line, method, args) {
   this.line = line;
@@ -56,7 +56,7 @@ TranslateCall.prototype.validateKey = function () {};
 TranslateCall.prototype.validateDefault = function () {
   var defaultValue = this.defaultValue;
 
-  if (_typeof(defaultValue) === 'object') {
+  if ((0, _typeof2["default"])(defaultValue) === 'object') {
     var defaultKeys = _utils["default"].keys(defaultValue);
 
     var dKeys;
@@ -116,7 +116,7 @@ TranslateCall.prototype.validateInterpolationValues = function (key, defaultValu
 
 TranslateCall.prototype.validateOptions = function () {
   var options = this.options;
-  if (_typeof(this.defaultValue) === 'object' && (!options || !options.count)) throw new _errors["default"].MissingCountValue(this.line);
+  if ((0, _typeof2["default"])(this.defaultValue) === 'object' && (!options || !options.count)) throw new _errors["default"].MissingCountValue(this.line);
 
   if (options) {
     for (var k in options) {

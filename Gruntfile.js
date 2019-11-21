@@ -16,8 +16,24 @@ module.exports = function(grunt){
         presets: [
           "@babel/preset-env",
           "@babel/preset-react",
-          "@babel/preset-flow"
+          "@babel/preset-flow",
         ],
+        plugins: [
+          "@babel/plugin-syntax-dynamic-import",
+          "@babel/plugin-proposal-class-properties",
+          "@babel/plugin-proposal-object-rest-spread",
+          [
+            "@babel/plugin-proposal-decorators",
+            {
+              "legacy": true
+            }
+          ],
+          ["@babel/plugin-transform-runtime",
+            {
+              "regenerator": true
+            }
+          ]
+        ]
       },
       testLib: {
         expand: true,

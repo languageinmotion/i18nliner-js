@@ -1,5 +1,7 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -14,8 +16,6 @@ var _abstract_processor = _interopRequireDefault(require("./abstract_processor")
 var _i18n_js_extractor = _interopRequireDefault(require("../extractors/i18n_js_extractor"));
 
 var _i18nliner = _interopRequireDefault(require("../i18nliner"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function JsProcessor(translations, options) {
   _abstract_processor["default"].call(this, translations, options);

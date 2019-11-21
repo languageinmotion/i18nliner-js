@@ -1,6 +1,32 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    "default": obj
+  };
+}
 
+module.exports = _interopRequireDefault;
 },{}],2:[function(require,module,exports){
+function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof2 = function _typeof2(obj) { return typeof obj; }; } else { _typeof2 = function _typeof2(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof2(obj); }
+
+function _typeof(obj) {
+  if (typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol") {
+    module.exports = _typeof = function _typeof(obj) {
+      return _typeof2(obj);
+    };
+  } else {
+    module.exports = _typeof = function _typeof(obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : _typeof2(obj);
+    };
+  }
+
+  return _typeof(obj);
+}
+
+module.exports = _typeof;
+},{}],3:[function(require,module,exports){
+
+},{}],4:[function(require,module,exports){
 (function () {
 	'use strict';
 
@@ -103,10 +129,10 @@
 	module.exports.table = crcTable;
 }());
 
-},{}],3:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 module.exports = require('./lib/speakingurl');
 
-},{"./lib/speakingurl":4}],4:[function(require,module,exports){
+},{"./lib/speakingurl":6}],6:[function(require,module,exports){
 (function (root) {
     'use strict';
 
@@ -1689,13 +1715,17 @@ module.exports = require('./lib/speakingurl');
         } catch (e) {}
     }
 })(this);
-},{}],5:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 "use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports["default"] = void 0;
+
+var _typeof2 = _interopRequireDefault(require("@babel/runtime/helpers/typeof"));
 
 var _pluralize = _interopRequireDefault(require("./pluralize"));
 
@@ -1706,10 +1736,6 @@ var _i18nliner = _interopRequireDefault(require("./i18nliner"));
 var _speakingurl = _interopRequireDefault(require("speakingurl"));
 
 var _crc = _interopRequireDefault(require("crc32"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 var CallHelpers = {
   ALLOWED_PLURALIZATION_KEYS: ["zero", "one", "few", "many", "other"],
@@ -1733,7 +1759,7 @@ var CallHelpers = {
     }
   },
   isObject: function isObject(object) {
-    return _typeof(object) === 'object' && object !== this.UNSUPPORTED_EXPRESSION;
+    return (0, _typeof2["default"])(object) === 'object' && object !== this.UNSUPPORTED_EXPRESSION;
   },
   validDefault: function validDefault(allowBlank) {
     var defaultValue = this.defaultValue;
@@ -1742,7 +1768,7 @@ var CallHelpers = {
   inferKey: function inferKey(defaultValue, translateOptions) {
     if (this.validDefault(defaultValue)) {
       defaultValue = this.normalizeDefault(defaultValue, translateOptions);
-      if (_typeof(defaultValue) === 'object') defaultValue = "" + defaultValue.other;
+      if ((0, _typeof2["default"])(defaultValue) === 'object') defaultValue = "" + defaultValue.other;
       return this.keyify(defaultValue);
     }
   },
@@ -1781,7 +1807,7 @@ var CallHelpers = {
    * default_object, options
    **/
   isKeyProvided: function isKeyProvided(keyOrDefault, defaultOrOptions, maybeOptions) {
-    if (_typeof(keyOrDefault) === 'object') return false;
+    if ((0, _typeof2["default"])(keyOrDefault) === 'object') return false;
     if (typeof defaultOrOptions === 'string') return true;
     if (maybeOptions) return true;
     if (typeof keyOrDefault === 'string' && keyOrDefault.match(CallHelpers.keyPattern)) return true;
@@ -1792,7 +1818,7 @@ var CallHelpers = {
     return this.isObject(object) && (pKeys = _utils["default"].keys(object)) && pKeys.length > 0 && _utils["default"].difference(pKeys, this.ALLOWED_PLURALIZATION_KEYS).length === 0;
   },
   inferArguments: function inferArguments(args, meta) {
-    if (args.length === 2 && _typeof(args[1]) === 'object' && args[1].defaultValue) return args;
+    if (args.length === 2 && (0, _typeof2["default"])(args[1]) === 'object' && args[1].defaultValue) return args;
     var hasKey = this.isKeyProvided.apply(this, args);
     if (meta) meta.inferredKey = !hasKey;
     if (!hasKey) args.unshift(null);
@@ -1838,8 +1864,10 @@ var CallHelpers = {
 var _default = CallHelpers;
 exports["default"] = _default;
 
-},{"./i18nliner":8,"./pluralize":9,"./utils":10,"crc32":2,"speakingurl":3}],6:[function(require,module,exports){
+},{"./i18nliner":10,"./pluralize":11,"./utils":12,"@babel/runtime/helpers/interopRequireDefault":1,"@babel/runtime/helpers/typeof":2,"crc32":4,"speakingurl":5}],8:[function(require,module,exports){
 "use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -1849,8 +1877,6 @@ exports["default"] = void 0;
 var _call_helpers = _interopRequireDefault(require("../call_helpers"));
 
 var _utils = _interopRequireDefault(require("../utils"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var extend = function extend(I18n) {
   var htmlEscape = _utils["default"].htmlEscape;
@@ -1918,17 +1944,17 @@ var extend = function extend(I18n) {
 var _default = extend;
 exports["default"] = _default;
 
-},{"../call_helpers":5,"../utils":10}],7:[function(require,module,exports){
+},{"../call_helpers":7,"../utils":12,"@babel/runtime/helpers/interopRequireDefault":1}],9:[function(require,module,exports){
 "use strict";
 
-var _i18n_js = _interopRequireDefault(require("./i18n_js"));
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+var _i18n_js = _interopRequireDefault(require("./i18n_js"));
 
 /* global I18n */
 (0, _i18n_js["default"])(I18n);
 
-},{"./i18n_js":6}],8:[function(require,module,exports){
+},{"./i18n_js":8,"@babel/runtime/helpers/interopRequireDefault":1}],10:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -2037,7 +2063,7 @@ var I18nliner = {
 var _default = I18nliner;
 exports["default"] = _default;
 
-},{"fs":1}],9:[function(require,module,exports){
+},{"fs":3}],11:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -2074,7 +2100,7 @@ pluralize.withCount = function (count, string) {
 var _default = pluralize;
 exports["default"] = _default;
 
-},{}],10:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -2144,4 +2170,4 @@ var Utils = {
 var _default = Utils;
 exports["default"] = _default;
 
-},{}]},{},[7]);
+},{}]},{},[9]);

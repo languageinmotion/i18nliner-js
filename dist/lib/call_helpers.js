@@ -1,9 +1,13 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports["default"] = void 0;
+
+var _typeof2 = _interopRequireDefault(require("@babel/runtime/helpers/typeof"));
 
 var _pluralize = _interopRequireDefault(require("./pluralize"));
 
@@ -14,10 +18,6 @@ var _i18nliner = _interopRequireDefault(require("./i18nliner"));
 var _speakingurl = _interopRequireDefault(require("speakingurl"));
 
 var _crc = _interopRequireDefault(require("crc32"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 var CallHelpers = {
   ALLOWED_PLURALIZATION_KEYS: ["zero", "one", "few", "many", "other"],
@@ -41,7 +41,7 @@ var CallHelpers = {
     }
   },
   isObject: function isObject(object) {
-    return _typeof(object) === 'object' && object !== this.UNSUPPORTED_EXPRESSION;
+    return (0, _typeof2["default"])(object) === 'object' && object !== this.UNSUPPORTED_EXPRESSION;
   },
   validDefault: function validDefault(allowBlank) {
     var defaultValue = this.defaultValue;
@@ -50,7 +50,7 @@ var CallHelpers = {
   inferKey: function inferKey(defaultValue, translateOptions) {
     if (this.validDefault(defaultValue)) {
       defaultValue = this.normalizeDefault(defaultValue, translateOptions);
-      if (_typeof(defaultValue) === 'object') defaultValue = "" + defaultValue.other;
+      if ((0, _typeof2["default"])(defaultValue) === 'object') defaultValue = "" + defaultValue.other;
       return this.keyify(defaultValue);
     }
   },
@@ -89,7 +89,7 @@ var CallHelpers = {
    * default_object, options
    **/
   isKeyProvided: function isKeyProvided(keyOrDefault, defaultOrOptions, maybeOptions) {
-    if (_typeof(keyOrDefault) === 'object') return false;
+    if ((0, _typeof2["default"])(keyOrDefault) === 'object') return false;
     if (typeof defaultOrOptions === 'string') return true;
     if (maybeOptions) return true;
     if (typeof keyOrDefault === 'string' && keyOrDefault.match(CallHelpers.keyPattern)) return true;
@@ -100,7 +100,7 @@ var CallHelpers = {
     return this.isObject(object) && (pKeys = _utils["default"].keys(object)) && pKeys.length > 0 && _utils["default"].difference(pKeys, this.ALLOWED_PLURALIZATION_KEYS).length === 0;
   },
   inferArguments: function inferArguments(args, meta) {
-    if (args.length === 2 && _typeof(args[1]) === 'object' && args[1].defaultValue) return args;
+    if (args.length === 2 && (0, _typeof2["default"])(args[1]) === 'object' && args[1].defaultValue) return args;
     var hasKey = this.isKeyProvided.apply(this, args);
     if (meta) meta.inferredKey = !hasKey;
     if (!hasKey) args.unshift(null);

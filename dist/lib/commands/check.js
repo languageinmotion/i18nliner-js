@@ -1,5 +1,7 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -12,8 +14,6 @@ var _translation_hash = _interopRequireDefault(require("../extractors/translatio
 var _generic_command = _interopRequireDefault(require("./generic_command"));
 
 var _js_processor = _interopRequireDefault(require("../processors/js_processor"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var red = _cliColor["default"].red;
 var green = _cliColor["default"].green;
