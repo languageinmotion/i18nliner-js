@@ -73,5 +73,5 @@ module.exports = function(grunt){
 
   grunt.registerTask('test', [ 'clean', 'babel:testLib', 'babel:tests' ]);
   grunt.registerTask('default', [ 'babel:testLib', 'babel:tests' ]);
-  grunt.registerTask('dist', ['test', 'copy', 'browserify']);
+  grunt.registerTask('dist', ['babel:tests', 'copy', 'browserify']);
 };

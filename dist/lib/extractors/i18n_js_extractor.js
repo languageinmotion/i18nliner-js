@@ -7,7 +7,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 
-var _babelTraverse = _interopRequireDefault(require("babel-traverse"));
+var _traverse = _interopRequireDefault(require("@babel/traverse"));
 
 var _translate_call = _interopRequireDefault(require("./translate_call"));
 
@@ -16,8 +16,6 @@ var _utils = _interopRequireDefault(require("../utils"));
 var _call_helpers = _interopRequireDefault(require("../call_helpers"));
 
 var _translation_hash = _interopRequireDefault(require("./translation_hash"));
-
-var _i18nliner = _interopRequireDefault(require("../i18nliner"));
 
 function I18nJsExtractor(options) {
   this.ast = options.ast;
@@ -37,7 +35,7 @@ I18nJsExtractor.prototype.run = function () {
     this.handler = this.translations.set.bind(this.translations);
   }
 
-  (0, _babelTraverse["default"])(this.ast, {
+  (0, _traverse["default"])(this.ast, {
     enter: this.enter.bind(this),
     exit: this.exit.bind(this)
   });
